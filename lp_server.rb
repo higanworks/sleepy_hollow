@@ -2,6 +2,7 @@ require "bundler"
 Bundler.setup
 
 require 'sinatra'
+require "eventmachine"
 
 EM.threadpool_size = 300
 
