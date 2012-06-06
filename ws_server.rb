@@ -1,5 +1,6 @@
 require "bundler"
 require "benchmark"
+require "optparse"
 
 Bundler.setup
 
@@ -7,7 +8,15 @@ require "em-websocket"
 
 @clients = []
 
-EM::WebSocket.start(host: "0.0.0.0", port: 8081) do |ws|
+opt = OptionParser.new
+
+opt.on('-p =[listening port]', '--port') { |port| $port = port.to_i }
+opt.parse(ARGV)
+
+$port ||= 8080
+
+puts "running on #{$port}"
+EM::WebSocket.start(host: "0.0.0.0", port: $port) do |ws|
   ws.onopen do
     @clients << ws
     p "open with: #{@clients.size}"
