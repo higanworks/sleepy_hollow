@@ -19,7 +19,7 @@ puts "running on #{$port}"
 EM::WebSocket.start(host: "0.0.0.0", port: $port) do |ws|
   ws.onopen do
     @clients << ws
-    p "open with: #{@clients.size}"
+    puts "open with: #{@clients.size}"
   end
 
   ws.onmessage do |message|
@@ -40,7 +40,7 @@ EM::WebSocket.start(host: "0.0.0.0", port: $port) do |ws|
   end
 
   ws.onerror do
-    p "err"
+    puts "err"
   end
 end
 
