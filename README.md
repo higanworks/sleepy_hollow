@@ -1,7 +1,7 @@
 # Sleepy hollow
 ---
 
-## Long poling用
+## Long polling用
 
 ### 起動
 ```
