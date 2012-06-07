@@ -5,9 +5,6 @@ Bundler.setup
 require 'sinatra'
 require "eventmachine"
 
-port = ENV["PORT"] ||= "5228"
-
-set :port, port
 EM.threadpool_size = 300
 
 get "/" do
