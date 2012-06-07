@@ -5,8 +5,16 @@
 
 ### 起動
 ```
-bundle exec thin start
+ruby lp_server.rb
 ```
+
+デフォルトポートは5228、ポートを指定する場合は下記。
+
+```
+PORT=8080 ruby lp_server.rb
+```
+
+最大同時セッションは300です。
 
 ### 利用方法
 Server側のレスポンスを10秒間停止させる。
@@ -23,10 +31,31 @@ http://higan.example.com?wait=10
 ruby ws_server.rb
 ```
 
-### 利用方法
-Server側のレスポンスを10秒間停止させる。
+デフォルトポートは5228、ポートを指定する場合は下記。
 
 ```
-ws.send("10") #=> 送られたメッセージの数値分waitし、その後 "wait: <待ち時間>s" とレスポンスを返します。
+ruby ws_server.rb -p 8080
 ```
+
+最大同時セッションは上限未計測ですが５０００まで確認しています。
+
+
+### 利用方法
+Server側のレスポンスを10秒間停止させる場合、Websocket接続後に
+
+送られたメッセージの数値分waitし、その後 "wait: <待ち時間>s" とレスポンスを返します。 
+
+
+    10
+    -- sleep 10 seconds -- 
+    > wait: 10s
+
+テストする場合はnode.jsのwscat等のWebSocketクライアントで接続する。
+
+    npm install -g ws
+    $ wscat -c ws://localhost:5228/
+    connected (press CTRL+C to quit)
+    > 5
+    -- sleep 5 seconds -- 
+    < wait: 5s
 
