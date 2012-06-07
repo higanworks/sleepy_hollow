@@ -13,7 +13,7 @@ opt = OptionParser.new
 opt.on('-p =[listening port]', '--port') { |port| $port = port.to_i }
 opt.parse(ARGV)
 
-$port ||= 8080
+$port ||= 5228
 
 puts "running on #{$port}"
 EM::WebSocket.start(host: "0.0.0.0", port: $port) do |ws|
