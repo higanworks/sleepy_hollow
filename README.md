@@ -5,13 +5,7 @@
 
 ### 起動
 ```
-ruby lp_server.rb
-```
-
-デフォルトポートは5228、ポートを指定する場合は下記。
-
-```
-PORT=8080 ruby lp_server.rb
+ruby lp_server.rb  -p 5228
 ```
 
 最大同時セッションは300です。
@@ -28,13 +22,7 @@ http://higan.example.com?wait=10
 
 ### 起動
 ```
-ruby ws_server.rb
-```
-
-デフォルトポートは5228、ポートを指定する場合は下記。
-
-```
-ruby ws_server.rb -p 8080
+ruby ws_server.rb -p 5228
 ```
 
 最大同時セッションは上限未計測ですが５０００まで確認しています。
